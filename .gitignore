@@ -123,3 +123,6 @@ dmypy.json
 
 # env
 env
+
+#intelliji project settings
+.idea
