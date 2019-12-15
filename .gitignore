@@ -130,3 +130,6 @@ env
 
 # Mac files
 *.DS_Store
+
+# env files
+.env
