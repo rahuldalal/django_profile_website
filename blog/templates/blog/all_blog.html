@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    {% load static %}
+    {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -64,37 +64,31 @@
 </header>
 
 <main role="main">
+    <h1 class="text-center pt-3">Blog</h1>
+    <div class="container">
+        <h2>Latest Blogs</h2>
+        <hr/>
+        <div class="row">
+            {% for blog in blogs.all %}
+                <div class="container" id="blog" name="blog">
+                    <div class="row">
+                        <div class="col-md-12"><h3><a href="{% url 'blog' blog.id %}">{{ blog.title }}</a></h3></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><p class="small">{{ blog.pub_date }}</p></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><img src="{{ blog.image.url }}" class="img-fluid"></div>
+                    </div>
 
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1>Hi, I'm Rahul</h1>
-            <p class="lead text-muted">Hey, my name is Rahul Dalal and I love to create great products!</p>
-            <p>
-                <a href="mailto:rahul.v.dalal@gmail.com" class="btn btn-primary my-2">Email Me</a>
-            </p>
-            <img src="{% static 'sample_profile.jpeg' %}" height="300" weight="200" class="image-fluid">
-        </div>
-    </section>
-
-    <div class="album py-5 bg-light">
-        <div class="container">
-
-            <div class="row">
-                {% for job in jobs.all %}
-
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img class="img-fluid img-thumbnail" src="{{ job.image.url }}">
-                        <div class="card-body">
-                            <p class="card-text">{{ job.summary }}</p>
-                        </div>
+                    <div class="row">
+                        <div class="col-md-12"><p>{{ blog.summary }} ...</p></div>
                     </div>
                 </div>
-
-                {% endfor %}
-            </div>
+            {% endfor %}
         </div>
     </div>
+
 
 </main>
 
